@@ -69,7 +69,7 @@ y_encoded[np.arange(y.size), y] = 1
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
 # Создаем объект класса MLP с параметрами
-mlp = MLP(input_nodes=4, hidden_nodes=10, output_nodes=3, learning_rate=0.1)
+mlp = MLP(input_nodes=4, hidden_nodes=15, output_nodes=3, learning_rate=0.1)
 
 # Тренируем модель
 epochs = 1000
@@ -84,8 +84,8 @@ for epoch in range(epochs):
 # Оцениваем модель
 test_predictions = mlp.forward(X_test.T)
 test_accuracy = accuracy(y_test, test_predictions.T)
-print(f"Test accuracy: {test_accuracy * 100}%")
-print(f"Loss: {loss_history[-1]}")
+print(f"Test accuracy: {test_accuracy * 100:.2f}%")
+print(f"Loss: {loss_history[-1]:.5f}")
 
 # Графики ошибки
 plt.plot(loss_history)
